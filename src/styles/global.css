@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+
 @import "tailwindcss";
 
 @theme {
@@ -13,4 +15,6 @@
 	--color-dark-accent-amber: #d29922;
 	--color-dark-accent-red: #f85149;
 	--color-dark-accent-purple: #bc8cff;
+
+	--font-mono: "Fira Mono", monospace;
 }
