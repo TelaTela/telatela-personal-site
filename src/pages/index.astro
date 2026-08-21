@@ -1,9 +1,19 @@
 ---
+import { Card, CardTitle } from "../components/card.tsx";
 import CheckboxDemo from "../components/checkbox-demo.tsx";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <h1 class="text-3xl font-bold underline">Hello Astro!</h1>
-  <CheckboxDemo client:load />
+  <Card>
+    <CardTitle>
+      <h1>Announcement</h1>
+    </CardTitle>
+  </Card>
+
+  <Card>
+    <CardTitle>
+      <h1>Recent Blogs</h1>
+    </CardTitle>
+  </Card>
 </Layout>
