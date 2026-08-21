@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
@@ -10,5 +10,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Fira Code",
+      cssVariable: "--font-fira-code",
+      weights: ["300 700"],
+      fallbacks: ["monospace"],
+    },
+  ],
 });
-
