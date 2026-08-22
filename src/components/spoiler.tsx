@@ -16,12 +16,20 @@ const scrambleText = (text: string) => {
     .join("");
 };
 
+const firstShowText = (text: string) => {
+  return text
+    .split("")
+    .map((char) => (char === " " ? " " : "█"))
+    .join("");
+};
+
 export default function ({
   spoilerText,
   duration,
   intervalsBetween,
 }: SpoilerProps) {
   const [text, setText] = useState<string>("");
+  const [firstShow, setFirstShow] = useState<boolean>(true);
   const [restored, setRestored] = useState<boolean>(false);
   const intervalRef = useRef<ReturnType<typeof setInterval>>(null);
 
@@ -45,6 +53,7 @@ export default function ({
 
   useEffect(() => {
     scrambler();
+    setFirstShow(false);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -55,9 +64,9 @@ export default function ({
     <span
       onClick={restorer}
       data-restored={restored}
-      className="hover:cursor-pointer data-[restored=true]:hover:cursor-default"
+      className="data-[restored=false]:hover:cursor-pointer"
     >
-      {text}
+      {firstShow ? firstShowText(spoilerText) : text}
     </span>
   );
 }
