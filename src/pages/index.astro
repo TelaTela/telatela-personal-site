@@ -1,5 +1,6 @@
 ---
 import { Card, CardTitle } from "../components/card.tsx";
+import Spoiler from "../components/spoiler.tsx";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -8,6 +9,12 @@ import Layout from "../layouts/Layout.astro";
     <CardTitle>
       <h1>Announcement</h1>
     </CardTitle>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus,
+      ratione. <Spoiler client:load spoilerText="lorem ipsum dolor sit amet." /> Lorem
+      ipsum dolor sit amet.
+    </p>
   </Card>
 
   <Card>
