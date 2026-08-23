@@ -1,6 +1,7 @@
 ---
 import { Font } from "astro:assets";
 import { Card, CardTitle } from "../components/card";
+import LayoutNavigation from "../components/compositions/layout-navigation.tsx";
 import "../styles/global.css";
 
 interface Props {
@@ -27,6 +28,8 @@ const { title } = Astro.props;
         <CardTitle>
           <h1>Navigation</h1>
         </CardTitle>
+
+        <LayoutNavigation client:load />
       </Card>
       <Card className="col-span-2" />
     </header>
