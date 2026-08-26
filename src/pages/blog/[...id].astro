@@ -3,6 +3,8 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getCollection, render } from "astro:content";
 import { Card, CardTitle } from "../../components/card.tsx";
 import Layout from "../../layouts/Layout.astro";
+import { components, H1 } from "../../components/mdx-components.tsx";
+import { Separator } from "../../components/separator.tsx";
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("blog");
@@ -19,12 +21,38 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  publishedAt={post.data.publishedAt.toISOString()}
+  updatedAt={post.data.updatedAt?.toISOString()}
+>
   <Card>
     <CardTitle>Blog Entry</CardTitle>
 
     <article>
-      <Content />
+      <H1 className="mt-0">{post.data.title}</H1>
+      <div class="mb-4 flex gap-4">
+        <div>
+          <span class="text-dark-text-primary font-semibold">Published: </span>
+          {post.data.publishedAt.toLocaleDateString()}
+        </div>
+
+        {
+          post.data.updatedAt && (
+            <div>
+              <span class="text-dark-text-primary font-semibold">
+                Updated:{" "}
+              </span>
+              {post.data.updatedAt.toLocaleDateString()}
+            </div>
+          )
+        }
+      </div>
+
+      <Separator className="mb-4" />
+
+      <Content components={components} />
     </article>
   </Card>
 </Layout>
