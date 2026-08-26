@@ -11,27 +11,11 @@ export default function () {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink href="#">Home</NavigationMenuLink>
+            <NavigationMenuLink href="/">Home</NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink href="#">About Me</NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuLink href="#">Blog</NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuLink href="#">Funny thing 1</NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuLink href="#">Funny thing 2</NavigationMenuLink>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuLink href="#">Funny thing 3</NavigationMenuLink>
+            <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
