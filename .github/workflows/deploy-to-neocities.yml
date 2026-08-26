@@ -24,11 +24,12 @@ jobs:
     # If you don't need Node.js to build your site, you can omit this.
     - name: Use PNPM
       uses: pnpm/setup@v2
+      with:
+        version: 12.0.0
+        runtime: node@lts
     # If you have a different build process, replace this with your own build steps
     - name: Install deps and build
-      run: |
-        pnpm install
-        pnpm build
+      run: pnpm build
     # When the dist_dir is ready, deploy it to neocities
     # Here we deploy the folder named `public`
     - name: Deploy to neocities
