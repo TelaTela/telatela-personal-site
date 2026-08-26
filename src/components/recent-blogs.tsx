@@ -10,10 +10,15 @@ export default async function ({ maxPost = 5 }: RecentBlogsProps) {
     .slice(0, maxPost);
 
   return (
-    <ul className="list-disc">
+    <ul className="list-inside list-disc">
       {allPosts.map((post) => (
         <li key={post.id}>
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <a
+            className="hover:text-dark-text-primary focus:text-dark-text-primary active:text-dark-text-primary hover:underline focus:underline active:underline"
+            href={`/blog/${post.id}`}
+          >
+            {post.data.title} ({post.data.publishedAt.toLocaleDateString()})
+          </a>
         </li>
       ))}
     </ul>

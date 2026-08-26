@@ -10,11 +10,16 @@ const posts = await getCollection("blog");
   <Card>
     <CardTitle>Blog Entries</CardTitle>
 
-    <ul class="list-disc">
+    <ul class="list-inside list-disc">
       {
         posts.map((post) => (
-          <li key={post.id}>
-            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <li>
+            <a
+              class="hover:text-dark-text-primary focus:text-dark-text-primary active:text-dark-text-primary hover:underline focus:underline active:underline"
+              href={`/blog/${post.id}`}
+            >
+              {post.data.title} ({post.data.publishedAt.toLocaleDateString()})
+            </a>
           </li>
         ))
       }
