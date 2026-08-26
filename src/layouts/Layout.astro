@@ -41,7 +41,11 @@ const jsonLD = {
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="index, follow" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(jsonLD)}
+    />
   </head>
   <body class="bg-dark-bg text-dark-text-primary px-8 py-8 font-mono md:px-72">
     <header class="mb-8 grid grid-cols-12 gap-4">
