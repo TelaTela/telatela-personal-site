@@ -47,7 +47,10 @@ const jsonLD = {
       set:html={JSON.stringify(jsonLD)}
     />
   </head>
-  <body class="bg-dark-bg text-dark-text-primary px-8 py-8 font-mono md:px-72">
+
+  <body
+    class="bg-dark-bg text-dark-text-primary px-8 py-8 font-mono md:px-32 lg:px-72"
+  >
     <header class="mb-8 grid grid-cols-12 gap-4">
       <Card className="col-span-10">
         <CardTitle>
@@ -97,7 +100,7 @@ const jsonLD = {
         </Card>
       </aside>
 
-      <main class="col-span-3 flex flex-col gap-8 md:col-span-2">
+      <main class="col-span-3 flex flex-col gap-8 lg:col-span-2">
         <slot />
       </main>
     </div>
