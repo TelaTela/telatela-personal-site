@@ -1,6 +1,7 @@
 ---
 import { Card, CardTitle } from "../components/card.tsx";
 import RecentBlogs from "../components/recent-blogs.tsx";
+import SiteUpdates from "../components/site-updates.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -15,19 +16,21 @@ import Layout from "../layouts/Layout.astro";
     </p>
   </Card>
 
-  <Card>
-    <CardTitle>
-      <h1>Announcement</h1>
-    </CardTitle>
+  <div class="flex flex-col gap-8 lg:max-h-96 lg:flex-row lg:gap-4">
+    <Card className="max-h-96 lg:max-h-full lg:basis-1/2">
+      <CardTitle>
+        <h1>Recent Blogs</h1>
+      </CardTitle>
 
-    <p class="text-dark-text-primary">No announcement :(</p>
-  </Card>
+      <RecentBlogs />
+    </Card>
 
-  <Card>
-    <CardTitle>
-      <h1>Recent Blogs</h1>
-    </CardTitle>
+    <Card className="max-h-96 lg:max-h-full lg:basis-1/2">
+      <CardTitle>
+        <h1>Site Updates</h1>
+      </CardTitle>
 
-    <RecentBlogs />
-  </Card>
+      <SiteUpdates />
+    </Card>
+  </div>
 </Layout>

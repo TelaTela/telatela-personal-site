@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from "astro:content";
+import { Separator } from "./separator.tsx";
+import { components } from "./mdx-components.tsx";
+
+const updates = (await getCollection("update")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<div class="flex flex-col gap-2 overflow-scroll">
+  {
+    updates.map(async (update, idx) => {
+      const { Content } = await render(update);
+      const isLast = idx === updates.length - 1;
+
+      return (
+        <div>
+          <Content components={components} />
+
+          {!isLast && <Separator />}
+        </div>
+      );
+    })
+  }
+</div>
