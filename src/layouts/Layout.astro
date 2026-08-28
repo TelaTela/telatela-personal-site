@@ -13,7 +13,8 @@ interface Props {
   googleSiteVerification?: string;
 }
 
-const { title, description, publishedAt, updatedAt, googleSiteVerification } = Astro.props;
+const { title, description, publishedAt, updatedAt, googleSiteVerification } =
+  Astro.props;
 
 const jsonLD = {
   "@context": "https://schema.org",
@@ -29,7 +30,14 @@ const jsonLD = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
+    {
+      googleSiteVerification && (
+        <meta
+          name="google-site-verification"
+          content={googleSiteVerification}
+        />
+      )
+    }
 
     <Font cssVariable="--font-fira-code" />
 
