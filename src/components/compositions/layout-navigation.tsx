@@ -7,7 +7,7 @@ import {
 
 export default function () {
   return (
-    <nav className="">
+    <nav aria-label="Main Navigation">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>

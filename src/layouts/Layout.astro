@@ -1,6 +1,7 @@
 ---
 import { Font } from "astro:assets";
 import { Card, CardTitle } from "../components/card";
+import SideLinkItem from "../components/side-link-item.tsx";
 import LayoutNavigation from "../components/compositions/layout-navigation.tsx";
 import "../styles/global.css";
 
@@ -91,12 +92,17 @@ const jsonLD = {
 
         <Card>
           <CardTitle>
-            <h1>Free Space</h1>
+            <h1>Links</h1>
           </CardTitle>
 
-          <p>
-            Don't know what to put here yet but I don't like how empty it is.
-          </p>
+          <nav aria-label="Sidebar Links">
+            <ul class="list-inside list-disc">
+              <SideLinkItem
+                href="https://neocities.org/site/ketela"
+                target="_blank">Neocities Profile</SideLinkItem
+              >
+            </ul>
+          </nav>
         </Card>
       </aside>
 
