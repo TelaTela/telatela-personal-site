@@ -1,34 +1,57 @@
 import type { ComponentProps } from "react";
 import { cn } from "../lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 
-const H1 = ({ className, ...props }: ComponentProps<"h1">) => (
+const defaultHeadingClasses = "text-dark-text-primary font-bold";
+const headingVariants = cva(defaultHeadingClasses, {
+  variants: {
+    size: {
+      1: "text-3xl",
+      2: "text-2xl",
+      3: "text-xl",
+      4: "text-lg",
+      5: "text-md",
+      6: "text-sm",
+    },
+    spacing: {
+      default: "mt-4 mb-1",
+      top: "mt-4",
+      bottom: "mb-1",
+      none: "mt-0 mb-0",
+    },
+  },
+  defaultVariants: {
+    size: 1,
+    spacing: "default",
+  },
+});
+
+const H1 = ({
+  className,
+  size = 1,
+  spacing = "default",
+  ...props
+}: ComponentProps<"h1"> & VariantProps<typeof headingVariants>) => (
   <h1
-    className={cn(
-      "text-dark-text-primary mt-4 mb-1 text-3xl font-bold",
-      className,
-    )}
+    className={cn(headingVariants({ size, spacing, className }))}
     {...props}
   />
+);
+
+const H1BottomSpacing = ({ ...props }: ComponentProps<typeof H1>) => (
+  <H1 spacing="bottom" {...props} />
+);
+
+const H1NoSpacing = ({ ...props }: ComponentProps<typeof H1>) => (
+  <H1 spacing="none" {...props} />
 );
 
 const H2 = ({ className, ...props }: ComponentProps<"h2">) => (
-  <h2
-    className={cn(
-      "text-dark-text-primary mt-4 mb-1 text-2xl font-bold",
-      className,
-    )}
-    {...props}
-  />
+  <h2 className={cn("text-2xl", defaultHeadingClasses, className)} {...props} />
 );
 
 const H3 = ({ className, ...props }: ComponentProps<"h3">) => (
-  <h3
-    className={cn(
-      "text-dark-text-primary mt-4 mb-1 text-xl font-bold",
-      className,
-    )}
-    {...props}
-  />
+  <h3 className={cn("text-xl", defaultHeadingClasses, className)} {...props} />
 );
 
 const P = ({ ...props }: ComponentProps<"p">) => (
@@ -80,4 +103,18 @@ const components = {
   pre: Pre,
 };
 
-export { A, H1, H2, H3, P, Ul, Ol, BlockQuoute, Pre, components };
+export {
+  A,
+  H1,
+  H2,
+  H3,
+  H1NoSpacing,
+  H1BottomSpacing,
+  P,
+  Ul,
+  Ol,
+  BlockQuoute,
+  Pre,
+  components,
+  defaultHeadingClasses,
+};
