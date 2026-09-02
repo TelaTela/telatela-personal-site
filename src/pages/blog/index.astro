@@ -1,28 +1,23 @@
 ---
 import { getCollection } from "astro:content";
 import { Card, CardTitle } from "../../components/card.tsx";
+import { Separator } from "../../components/separator.tsx";
+import BlogsList from "../../components/blogs-list.tsx";
+import BlogTagsList from "../../components/blog-tags-list.tsx";
 import Layout from "../../layouts/Layout.astro";
+import { latest } from "../../lib/collections/blog.ts";
 
-const posts = await getCollection("blog");
+const posts = await latest();
 ---
 
 <Layout title="Blog Entries">
   <Card>
-    <CardTitle>Blog Entries</CardTitle>
+    <CardTitle>
+      <h1>Blog Entries</h1>
+    </CardTitle>
 
-    <ul class="list-inside list-disc">
-      {
-        posts.map((post) => (
-          <li>
-            <a
-              class="hover:text-dark-text-primary focus:text-dark-text-primary active:text-dark-text-primary hover:underline focus:underline active:underline"
-              href={`/blog/${post.id}`}
-            >
-              {post.data.title} ({post.data.publishedAt.toLocaleDateString()})
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <BlogsList posts={posts} />
   </Card>
+
+  <BlogTagsList />
 </Layout>

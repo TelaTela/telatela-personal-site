@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { filteredByTag, getTags } from "../../../lib/collections/blog.ts";
+import Layout from "../../../layouts/Layout.astro";
+import { Card, CardTitle } from "../../../components/card.tsx";
+import BlogsList from "../../../components/blogs-list.tsx";
+import BlogTagsList from "../../../components/blog-tags-list.tsx";
+
+export const getStaticPaths = (async () => {
+  const tags = await getTags();
+  return Object.entries(tags).map(([tag, count]) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag } = Astro.props;
+
+const posts = (await filteredByTag(tag)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<Layout title={`Posts tagged with ${tag}`}>
+  <Card>
+    <CardTitle>
+      <h1>Blogs tagged with "{tag}"</h1>
+    </CardTitle>
+
+    <BlogsList posts={posts} />
+  </Card>
+
+  <BlogTagsList />
+</Layout>
