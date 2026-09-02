@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import { Separator } from "./separator.tsx";
-import { components, H1BottomSpacing } from "./mdx-components.tsx";
+import { components } from "./mdx-components.tsx";
 import SiteUpdateTitle from "./site-update-title.tsx";
 
 const updates = (await getCollection("update")).sort(
