@@ -3,6 +3,8 @@ import { Font } from "astro:assets";
 import { Card, CardTitle } from "../components/card";
 import SideLinkItem from "../components/side-link-item.tsx";
 import LayoutNavigation from "../components/compositions/layout-navigation.tsx";
+import { Image } from "astro:assets";
+import nekowebButton3 from "../assets/buttons/nekoweb/button3.gif";
 import "../styles/global.css";
 
 interface Props {
@@ -108,17 +110,48 @@ const jsonLD = {
           <nav aria-label="Sidebar Links">
             <ul class="list-inside list-disc">
               <SideLinkItem
-                href="https://neocities.org/site/ketela"
-                target="_blank">Neocities Profile</SideLinkItem
+                href="https://nekoweb.org/follow/ketela"
+                target="_blank">Follow me on Nekoweb</SideLinkItem
               >
             </ul>
           </nav>
         </Card>
       </aside>
 
-      <main class="col-span-3 flex flex-col gap-8 lg:col-span-2">
-        <slot />
-      </main>
+      <div class="col-span-3 flex flex-col gap-8 lg:col-span-2">
+        <main class="flex flex-col gap-8">
+          <slot />
+        </main>
+
+        <footer>
+          <Card className="flex-row justify-center">
+            <div class="flex flex-col items-center gap-2">
+              <a
+                target="_blank"
+                title="Powered By Nekoweb"
+                href="https://nekoweb.org/"
+              >
+                <Image
+                  src={nekowebButton3}
+                  width={88}
+                  height={31}
+                  alt="Nekoweb Button"
+                />
+              </a>
+              <!-- button by exund -->
+
+              <span
+                >Powered By <a
+                  href="https://nekoweb.org/"
+                  title="nekoweb.org"
+                  class="text-dark-accent-amber underline hover:cursor-pointer"
+                  >Nekoweb</a
+                ></span
+              >
+            </div>
+          </Card>
+        </footer>
+      </div>
     </div>
   </body>
 </html>
