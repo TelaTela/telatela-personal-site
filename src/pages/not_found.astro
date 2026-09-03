@@ -1,0 +1,55 @@
+---
+import { Font } from "astro:assets";
+
+import { Card, CardTitle } from "../components/card";
+
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+
+    <Font cssVariable="--font-fira-code" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <title>are you lost?</title>
+  </head>
+
+  <body
+    class="bg-dark-bg text-dark-text-primary px-8 py-8 font-mono md:px-32 lg:px-72"
+  >
+    <main>
+      <Card className="flex flex-col items-center gap-4">
+        <pre
+          aria-hidden="true"
+          class="text-dark-accent-amber">
+   ░████     ░████      ░████   
+  ░██ ██    ░██ ░██    ░██ ██   
+ ░██  ██   ░██ ░████  ░██  ██   
+░██   ██   ░██░██░██ ░██   ██   
+░█████████ ░████ ░██ ░█████████ 
+     ░██    ░██ ░██       ░██   
+     ░██     ░████        ░██   
+                                
+        </pre>
+
+        <h1>I don't think what you are looking for exists.</h1>
+
+        <nav class="text-dark-text-primary flex gap-4">
+          <a
+            href="/"
+            class="hover:cursor-pointer hover:underline focus:underline active:underline"
+            title="Home">go home</a
+          >
+        </nav>
+      </Card>
+    </main>
+  </body>
+</html>
