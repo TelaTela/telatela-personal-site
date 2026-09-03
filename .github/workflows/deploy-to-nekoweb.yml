@@ -35,7 +35,7 @@ jobs:
     - name: Deploy to nekoweb
       uses: indiefellas/deploy2nekoweb@main
       with:
-        api_key: ${{ secrets.NEKOWEB_API_TOKEN }}
+        nekoweb-api-key: ${{ secrets.NEKOWEB_API_TOKEN }}
         nekoweb-domain: ${{ vars.NEKOWEB_DOMAIN }}
         nekoweb-username: ${{ vars.NEKOWEB_USERNAME }}
         directory: 'dist'
