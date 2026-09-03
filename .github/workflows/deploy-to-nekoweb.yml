@@ -1,15 +1,15 @@
-name: Deploy to neocities
+name: Deploy to nekoweb
 
 # only run on changes to main. Use main or master depending on whatever your default branch is called.
 on:
   push:
     branches:
-      - neocities
+      - main
 
   workflow_dispatch:
 
 concurrency: # prevent concurrent deploys doing strange things
-  group: deploy-to-neocities
+  group: deploy-to-nekoweb
   cancel-in-progress: true
 
 jobs:
@@ -32,11 +32,10 @@ jobs:
       run: pnpm build
     # When the dist_dir is ready, deploy it to neocities
     # Here we deploy the folder named `public`
-    - name: Deploy to neocities
-      uses: bcomnes/deploy-to-neocities@v3
+    - name: Deploy to nekoweb
+      uses: indiefellas/deploy2nekoweb@main
       with:
-        api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
-        cleanup: true
-        neocities_supporter: false # set this to true if you have a supporter account and want to bypass unsuported files filter.
-        preview_before_deploy: true # print a deployment plan prior to waiting for files to upload.
-        dist_dir: dist
+        api_key: ${{ secrets.NEKOWEB_API_TOKEN }}
+        nekoweb-domain: ${{ secrets.NEKOWEB_DOMAIN }}
+        nekoweb-username: ${{ secrets.NEKOWEB_USERNAME }}
+        directory: 'dist'
