@@ -62,61 +62,8 @@ const jsonLD = {
   <body
     class="bg-dark-bg text-dark-text-primary px-8 py-8 font-mono md:px-32 lg:px-72"
   >
-    <header class="mb-8 grid grid-cols-12 gap-4">
-      <Card className="col-span-12">
-        <CardTitle>
-          <h1>Navigation</h1>
-        </CardTitle>
-
-        <LayoutNavigation client:load />
-      </Card>
-      <!-- <Card className="col-span-2" /> -->
-    </header>
-
     <div class="grid grid-cols-3 gap-4">
-      <aside class="col-span-3 mb-8 flex flex-col gap-8 lg:col-span-1 lg:mb-0">
-        <Card>
-          <CardTitle>
-            <h1>About Me</h1>
-          </CardTitle>
-
-          <div class="flex flex-col gap-2">
-            <pre
-              aria-hidden="true"
-              class="text-dark-text-primary inline-block text-left text-[.5rem] leading-none whitespace-pre">
-██╗  ██╗███████╗████████╗███████╗██╗      █████╗
-██║ ██╔╝██╔════╝╚══██╔══╝██╔════╝██║     ██╔══██╗
-█████╔╝ █████╗     ██║   █████╗  ██║     ███████║
-██╔═██╗ ██╔══╝     ██║   ██╔══╝  ██║     ██╔══██║
-██║  ██╗███████╗   ██║   ███████╗███████╗██║  ██║
-╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝
-            </pre>
-
-            <p>
-              Hi! My name is{" "}
-              <span class="text-dark-text-primary underline">Ketela</span>,
-              welcome to my blog. You can read my random yappers here. Enjoy :D
-            </p>
-          </div>
-        </Card>
-
-        <Card>
-          <CardTitle>
-            <h1>Links</h1>
-          </CardTitle>
-
-          <nav aria-label="Sidebar Links">
-            <ul class="list-inside list-disc">
-              <SideLinkItem
-                href="https://neocities.org/site/ketela"
-                target="_blank">Neocities Profile</SideLinkItem
-              >
-            </ul>
-          </nav>
-        </Card>
-      </aside>
-
-      <main class="col-span-3 flex flex-col gap-8 lg:col-span-2">
+      <main class="col-span-3 flex flex-col gap-8">
         <slot />
       </main>
     </div>
